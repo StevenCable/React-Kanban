@@ -88,7 +88,7 @@ export default class Board extends React.Component {
               {group.toUpperCase()}
             </div>
               {
-                this.state.queueCards.map((card) => {
+                this.state[`${group}Cards`].map((card) => {
                   const {id, priority, status, title} = card;
                   return(<Card 
                       _key={id}
