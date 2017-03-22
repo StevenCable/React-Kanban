@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../Components/Card.js'
+import Card from '../Components/Card.js';
 
 export default class Board extends React.Component {
   constructor(){
@@ -14,17 +14,52 @@ export default class Board extends React.Component {
     ['queue', 'current', 'completed'].map((cards) =>{
       return (() =>{
         let oReq = new XMLHttpRequest();
-        oReq.addEventListener("load", (evt) => {
-          console.log('oReqRequest: ', oReq.response)
+        const reqListener = () =>{
+          console.log('oreq: ', oReq.response);
           this.setState(
-            {queueCards: JSON.parse(oReq.response)}
+            {[`${cards}Cards`]: JSON.parse(oReq.response)}
           );
-        });
-        oReq.open("GET", "/api/kanban/`${cards}`");
+        };
+        oReq.addEventListener("load", reqListener);
+        oReq.open("GET", `/api/kanban/${cards}`);
         oReq.send();
-      })()
-    })
+      })();
+    });
   }
+
+ 
+
+ // getQueue = () => {
+ //        let oReq = new XMLHttpRequest();
+ //        oReq.addEventListener('load', (event) => {
+ //            this.setState({
+ //                queueCards: JSON.parse(oReq.response)
+ //            });
+ //        });
+ //        oReq.open('GET', '/api/kanban/queue');
+ //        oReq.send();
+ //    }
+ //    getCurrent = () => {
+ //        let oReq = new XMLHttpRequest();
+ //        oReq.addEventListener('load', (event) => {
+ //            this.setState({
+ //                currentCards: JSON.parse(oReq.response)
+ //            });
+ //        });
+ //        oReq.open('GET', '/api/kanban/current');
+ //        oReq.send();
+ //    }
+ //    getCompleted = () => {
+ //        let oReq = new XMLHttpRequest();
+ //        oReq.addEventListener('load', (event) => {
+ //            this.setState({
+ //                completedCards: JSON.parse(oReq.response)
+ //            });
+ //        });
+ //        oReq.open('GET', '/api/kanban/completed');
+ //        oReq.send();
+ //    }
+
 
   // getCurrent(){
   //   var oReq = new XMLHttpRequest();
@@ -56,7 +91,7 @@ export default class Board extends React.Component {
                 this.state.queueCards.map((card) => {
                   const {id, priority, status, title} = card;
                   return(<Card 
-                      key={id}
+                      _key={id}
                       title={title}
                       status={status}
                       priority={priority}

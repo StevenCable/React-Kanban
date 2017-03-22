@@ -8,19 +8,13 @@ let Cards = db.Card;
 
 router.route('/:status')
   .get((req,res) => {
-    Cards.findAll({
-      order: "id",
-    },
-    {where: 
-      {status: req.params.status} 
-    })
+    Cards.findAll({where:{status: req.params.status}})
     .then((cards) => {
-      res.json({cardlist:{cards}});
+      res.send(cards);
     })
     .catch((err) => {
       res.send(err);
     });
-
   })
 
   .post((req,res) => {
