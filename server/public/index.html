@@ -1,0 +1,9 @@
+<h1>fuck you ed(sullivan)</h1>
+<script type="text/javascript">
+  var oReq = new XMLHttpRequest();
+  oReq.addEventListener("load", function(event){
+    console.log(JSON.parse(oReq.response));
+    })
+  oReq.open("GET", "/api/kanban/todo");
+  oReq.send()
+</script>

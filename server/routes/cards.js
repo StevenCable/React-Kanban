@@ -5,15 +5,16 @@ const bp = require('body-parser');
 
 let Cards = db.Card;
 
-router.use(bp.urlencoded({extended: true}));
 
-router.route('/')
+router.route('/:status')
   .get((req,res) => {
     Cards.findAll({
       order: "id",
+    },
+    {where: 
+      {status: req.params.status} 
     })
     .then((cards) => {
-      console.log('cards: ', {cards});
       res.json({cardlist:{cards}});
     })
     .catch((err) => {
@@ -23,7 +24,6 @@ router.route('/')
   })
 
   .post((req,res) => {
-    console.log("req.body: ", req.body.title);
     Cards.create({
       priority: req.body.title,
       status: req.body.status,
@@ -35,15 +35,24 @@ router.route('/')
     .catch(err => {
       res.send(err);
     });
-  })
+  });
 
+router.route('/:status/:id')
   .delete((req, res) => {
-    Cards.destroy({
+    Cards.findById(this.target.id)
+      .then(card => {
+        Cards.destroy({
+          where: {
+            id: `${req.params.id}`
+          }
+        })
+        .then(() => {
+          res.send('Hope that wasn\'t important!');
+        });
+      });
+  });
 
-    })
-  })
-
-router.route('/:id/edit')
+router.route('/:status/:id/edit')
   .put((req,res) => {
     //may have to do find by id first depending on how i want to accomplish my edit
     Cards.update({

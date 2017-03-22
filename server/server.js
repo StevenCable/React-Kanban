@@ -17,15 +17,18 @@ const app = express();
 // const bcrypt = require('bcrypt');
 const PORT = process.env.PORT || 8080;
 
-app.use('/api/kanban/todo', cardRoute);
+app.use(bp.urlencoded({extended: true}));
 
-app.get('/', (req, res) =>{
-  res.send('sanity check muh fuqqa');
-});
+app.use('/api/kanban/', cardRoute);
+app.use(express.static('./public'));
+
+// app.get('/', (req, res) =>{
+//   res.render();
+// });
 
 
 app.listen(PORT, () => {
-  db.sequelize.sync();
+  // db.sequelize.sync();
   console.log('ya shit is up and runnin on port: ', PORT);
 });
 
