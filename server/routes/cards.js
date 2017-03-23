@@ -19,12 +19,12 @@ router.route('/:status')
 
   .post((req,res) => {
     Cards.create({
-      priority: req.body.title,
+      priority: req.body.priority,
       status: req.body.status,
       title: req.body.title,
     })
     .then((card) => {
-      res.send('posted bitches');
+      res.send(card);
     })
     .catch(err => {
       res.send(err);
