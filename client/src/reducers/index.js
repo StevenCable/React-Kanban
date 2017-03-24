@@ -6,7 +6,7 @@ const initialState = {
 	completedCards: []
 }
 
-function Cards(state = initialState, action) {
+function queueCards(state = initialState, action) {
 	switch(action.type) {
 		case ADD_CARD;
 
