@@ -2,10 +2,14 @@ import React from 'react';
 
 const Card = (props) => (
   <div className= {`card ` + props.status} >
-    {props._key}
-    {props.title}
-    {props.status}
-    {props.priority}    
+  	<ul>
+  		<li>
+		    <p>{props._key}</p>
+		    <p>{props.title}</p>
+		    <p>{props.status}</p>
+		    <p>{props.priority}</p>
+		</li>
+	</ul>  
   </div>
 
 )
