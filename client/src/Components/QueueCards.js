@@ -5,13 +5,11 @@ export default class CardList extends React.Component {
   constructor(props){
     super(props)
 
-     this.state = {
-      queue: [],
-      current: [],
-      completed: []
+     // this.state = {
+     //  queue: [],
+     //  current: [],
+     //  completed: []
     };
-
-  }
 
   render() {
     return(

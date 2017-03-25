@@ -2,7 +2,7 @@ import React from 'react';
 // import CardList from './CardList'
 
 const Card = (props) => (
-  <div className= {`card ` + props.status} >
+  <div className={`card ` + props.status} >
   	<ul>
   		<li>
 		    <p>{props._key}</p>

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Board from './Container/Board'
+import { addCard } from './actions';
+import { connect } from 'react-redux';
+
 
 class App extends Component {
   render() {
@@ -20,4 +23,21 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return({
+    cards: state.cards
+  })
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return({
+    onAddCard: (_key, title, status, priority) => {
+      dispatch(addCard(_key, title, status, priority));
+    }
+  })
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

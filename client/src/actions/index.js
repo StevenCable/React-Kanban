@@ -7,5 +7,5 @@ export function addCard(_key, title, status, priority){
 		title,
 		status,
 		priority
-	}
+	};
 }

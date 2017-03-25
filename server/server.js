@@ -16,7 +16,7 @@ app.use(express.static('./public'));
 
 
 app.listen(PORT, () => {
-  // db.sequelize.sync();
+  db.sequelize.sync();
   console.log('ya shit is up and runnin on port: ', PORT);
 });
 
