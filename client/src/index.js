@@ -10,7 +10,7 @@ import cards from './reducers';
 let store = createStore(cards);
 
 ReactDOM.render(
-	<Provider>
+	<Provider store={ store }>
   <App />
   </Provider>,
   document.getElementById('root')

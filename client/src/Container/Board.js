@@ -20,19 +20,6 @@ export default class Board extends React.Component {
   //       oReq.send();
   //     })();
   //   });
-  }
-
-  getQueue = () => {
-    let oReq = new XMLHttpRequest();
-    oReq.addEventListener('load', (event) => {
-      this.setState({
-        queueCards: JSON.parse(oReq.response)
-      });
-    });
-    oReq.open('GET', '/api/kanban/queue');
-    oReq.send();
-  }
-
   getCurrent = () => {
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", function(event){
