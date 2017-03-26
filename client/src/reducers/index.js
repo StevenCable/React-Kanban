@@ -1,13 +1,16 @@
 import { ADD_CARD } from '../actions';
 
 const initialState = {
-	cards: []
+	cards: [],
+	currentCards: [],
+	completeCards: []
+
 };
 
 function cards(state = initialState, action) {
 	switch(action.type) {
 		case ADD_CARD:
-			return Object.assign({}, state, {
+		let checkit = {
 				cards: [
 					...state.cards,
 					{
@@ -17,22 +20,12 @@ function cards(state = initialState, action) {
 						priority: action.priority
 					}
 				]
-			});
+			}
+			console.log('checkit: ', checkit);
+			return Object.assign({}, state, checkit);
 	default: 
 		return state;
 	}
 }
 
 export default cards;
-
-
-			// let ObjToMerge = {};
-			// ObjToMerge[action.status] = [
-			// 		...state.`${action.status}Cards`
-			// 	]
-
-	// 		return { 
-	// 			Object.assign({}, state,
-	// 			ObjToMerge[action.status]
-	// 		) 
-	// };

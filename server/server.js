@@ -15,6 +15,7 @@ app.use('/api/kanban/', cardRoute);
 app.use(express.static('./public'));
 
 
+
 app.listen(PORT, () => {
   db.sequelize.sync();
   console.log('ya shit is up and runnin on port: ', PORT);

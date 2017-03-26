@@ -1,21 +1,25 @@
 import React from 'react';
 import Card from './Card.js';
 
-const CardList = (props) => {
-  console.log('props: ', props);
-  return(
-    <div>
-      {props.cards.map((card) =>{
-        // const {id, priority, status, title} = card;
-        return(<Card 
-          _key={card.id}
-          title={card.title}
-          status={card.status}
-          priority={card.priority}
-        />)
-      })}
-    </div>
-  )
+class QueueList extends React.Component{
+  constructor(props){
+    super(props)
+
+  }
+  render(){
+    return(
+      <div>
+        {this.props.cards.filter((card) =>card.status == 'queue').map((card) =>{
+          return(<Card 
+            _key={card.id}
+            title={card.title}
+            status={card.status}
+            priority={card.priority}
+          />)
+        })}
+      </div>
+    )
+  }
 }
 
-export default CardList;
+export default QueueList;

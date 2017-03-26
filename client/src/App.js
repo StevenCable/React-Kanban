@@ -4,7 +4,7 @@ import './App.css';
 import Board from './Container/Board'
 import { addCard } from './actions';
 import { connect } from 'react-redux';
-import CardList from './Components/QueueCards.js';
+import QueueList from './Components/QueueCards.js';
 
 
 class App extends Component {
@@ -15,10 +15,13 @@ class App extends Component {
   }
 getQueue = () => {
     let oReq = new XMLHttpRequest();
+
     oReq.addEventListener('load', (event) => {
-      this.setState({
-        cards: JSON.parse(oReq.response)
-      });
+      let data = JSON.parse(oReq.response)
+      let results = data.forEach(card => {
+        this.props.onAddCard(card.id, card.title, card.status, card.priority )
+      }) 
+      
     });
     oReq.open('GET', '/api/kanban/queue');
     oReq.send();
@@ -26,9 +29,11 @@ getQueue = () => {
 getCurrent = () => {
     let oReq = new XMLHttpRequest();
     oReq.addEventListener('load', (event) => {
-      this.setState({
-        cards: JSON.parse(oReq.response)
-      });
+      let data = JSON.parse(oReq.response)
+      let results = data.forEach(card => {
+        this.props.onAddCard(card.id, card.title, card.status, card.priority )
+      }) 
+      
     });
     oReq.open('GET', '/api/kanban/current');
     oReq.send();
@@ -36,12 +41,15 @@ getCurrent = () => {
 getComplete = () => {
   let oReq = new XMLHttpRequest();
   oReq.addEventListener('load', (event) => {
-
-      this.props.onAddCard(JSON.parse(oReq.response))
-  });
-  oReq.open('GET', '/api/kanban/complete');
-  oReq.send();
-}
+     let data = JSON.parse(oReq.response)
+      let results = data.forEach(card => {
+        this.props.onAddCard(card.id, card.title, card.status, card.priority )
+      }) 
+      
+    });
+    oReq.open('GET', '/api/kanban/completed');
+    oReq.send();
+  }
 
 componentWillMount() {
   this.getQueue()
@@ -50,6 +58,7 @@ componentWillMount() {
 }
 
   render(){
+    console.log("this.props: ", this.props)
     return (
       <div className="App">
         <div className="App-header">
@@ -59,8 +68,7 @@ componentWillMount() {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <CardList
-          cards={this.props.cards}
+        <QueueList cards={this.props.cards}
         />
       </div>
     );
