@@ -6,10 +6,11 @@ const bp = require('body-parser');
 let Cards = db.Card;
 
 
-router.route('/:status')
+router.route('/allcards')
   .get((req,res) => {
-    Cards.findAll({where:{status: req.params.status}})
+    Cards.findAll()
     .then((cards) => {
+      console.log('cards: ', cards);
       res.send(cards);
     })
     .catch((err) => {
@@ -18,13 +19,16 @@ router.route('/:status')
   })
 
   .post((req,res) => {
+    console.log("req.body: ", req.body);
     Cards.create({
-      priority: req.body.title,
+      priority: req.body.priority,
       status: req.body.status,
       title: req.body.title,
+      assignTo: req.body.assignTo
     })
     .then((card) => {
-      res.send('posted bitches');
+      // console.log('mammaJamma ', card);
+      res.send(card);
     })
     .catch(err => {
       res.send(err);
@@ -53,6 +57,7 @@ router.route('/:status/:id/edit')
       priority: req.body.priority,
       status: req.body.status,
       title: req.body.title,
+      assignTo: req.body.assignTo
     },
       {where: {
         id: req.params.id,

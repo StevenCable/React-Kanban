@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
@@ -16,6 +16,53 @@
 
 .App-intro {
   font-size: large;
+}
+
+form{
+  text-align: center;
+}
+
+input{
+  padding: 0.25rem;
+  margin: 0.25rem;
+  text-align: center;
+}
+
+.taskBoard{
+  display: flex;
+  flex-flow: no-wrap;
+  justify-content: center;
+  height: 90%;
+  padding: 0.5rem;
+}
+
+.queue{
+  border: 3px red solid;
+  width: 30%;
+  padding-left: 0.25rem;
+    
+}
+.current{
+  border: 3px blue solid;
+  width: 30%;
+
+}
+.completed{
+  border: 3px green solid;
+  width: 30%;
+
+}
+.urgent{
+      border: 3px orange dotted;
+      margin: 0.5rem;
+      padding: 0.5rem;
+
+}
+.normal{
+      border: 3px pink dotted;
+      padding: 0.5rem;
+      margin: 0.5rem;
+
 }
 
 @keyframes App-logo-spin {

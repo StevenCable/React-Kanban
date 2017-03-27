@@ -8,13 +8,14 @@ class QueueList extends React.Component{
   }
   render(){
     return(
-      <div>
-        {this.props.cards.filter((card) =>card.status == 'queue').map((card) =>{
+      <div className="queue">
+        {this.props.cards.filter( ( card ) => card.status ==='queue').map( ( card ) => {
           return(<Card 
-            _key={card.id}
-            title={card.title}
-            status={card.status}
-            priority={card.priority}
+            _key={ card._key }
+            title={ card.title }
+            status={ card.status }
+            priority={ card.priority }
+            assignTo={ card.assignTo }
           />)
         })}
       </div>
