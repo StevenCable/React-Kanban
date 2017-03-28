@@ -10,7 +10,6 @@ router.route('/allcards')
   .get((req,res) => {
     Cards.findAll()
     .then((cards) => {
-      console.log('cards: ', cards);
       res.send(cards);
     })
     .catch((err) => {
@@ -19,7 +18,6 @@ router.route('/allcards')
   })
 
   .post((req,res) => {
-    console.log("req.body: ", req.body);
     Cards.create({
       priority: req.body.priority,
       status: req.body.status,
@@ -27,8 +25,8 @@ router.route('/allcards')
       assignTo: req.body.assignTo
     })
     .then((card) => {
-      // console.log('mammaJamma ', card);
-      res.send(card);
+      console.log('caaaarddd', card)
+      res.send("shiiiiiiit");
     })
     .catch(err => {
       res.send(err);
@@ -50,21 +48,28 @@ router.route('/:status/:id')
       });
   });
 
-router.route('/:status/:id/edit')
+router.route('/editCard')
   .put((req,res) => {
-    //may have to do find by id first depending on how i want to accomplish my edit
+    let cardID = req.body._key;
+    // console.log('cardID: ', req.body.priority)
     Cards.update({
+      _key: req.body._key,
       priority: req.body.priority,
       status: req.body.status,
       title: req.body.title,
       assignTo: req.body.assignTo
     },
       {where: {
-        id: req.params.id,
+        id: cardID
       }
     })    
-    .then((card) => {
-      res.send('card correctd');
+    .then(() => {
+      Cards.findById(cardID)
+        .then(card => {
+          console.log('puttin card:', card)
+          res.send(card);
+        });
+      
     })
     .catch(err => {
       res.send(err);

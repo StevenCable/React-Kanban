@@ -11,6 +11,8 @@ class CurrentList extends React.Component{
       <div className="current">
         {this.props.cards.filter( ( card ) =>card.status === 'current').map( ( card ) =>{
           return(<Card 
+            editStatus={this.props.editStatus}
+            editPriority={this.props.editPriority}
             _key={ card._key }
             title={ card.title }
             status={ card.status }

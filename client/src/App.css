@@ -20,7 +20,13 @@
 
 form{
   text-align: center;
+
+  
 }
+
+.editCard{
+    text-align: left;
+  }
 
 input{
   padding: 0.25rem;

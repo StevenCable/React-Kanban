@@ -1,4 +1,5 @@
 export const ADD_CARD = 'ADD_CARD';
+export const UPDATE_CARD = 'UPDATE_CARD';
 
 export function addCard(_key, title, status, priority, assignTo){
   console.log('arguments: ', arguments);
@@ -10,4 +11,14 @@ export function addCard(_key, title, status, priority, assignTo){
 		priority,
     assignTo
 	};
+}
+
+export function updateCard(_key, status, priority){
+  console.log('update arguments: ', arguments);
+  return {
+    type: UPDATE_CARD,
+    _key,
+    status,
+    priority
+  };
 }

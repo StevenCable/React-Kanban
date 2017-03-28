@@ -3,7 +3,7 @@ import Card from './Card.js';
 
 class QueueList extends React.Component{
   constructor(props){
-    super(props)
+    super(props);
 
   }
   render(){
@@ -11,12 +11,15 @@ class QueueList extends React.Component{
       <div className="queue">
         {this.props.cards.filter( ( card ) => card.status ==='queue').map( ( card ) => {
           return(<Card 
+            editStatus={this.props.editStatus}
+            editPriority={this.props.editPriority}
             _key={ card._key }
             title={ card.title }
             status={ card.status }
             priority={ card.priority }
             assignTo={ card.assignTo }
-          />)
+            />
+          )
         })}
       </div>
     )

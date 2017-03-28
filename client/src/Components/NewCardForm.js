@@ -23,10 +23,8 @@ class NewCardForm extends Component {
   }
 
   addCard(card){
-    // console.log('gimme card: ', card)
     addCardReq(card)
       .then(card => {
-        console.log('cardeezy: ', card);
         this.props.onAddCard(card.id, card.title, card.status, card.priority, card.assignTo);
       })
 

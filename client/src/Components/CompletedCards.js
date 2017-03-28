@@ -10,7 +10,9 @@ class CompletedList extends React.Component{
     return(
       <div className="completed">
         {this.props.cards.filter( ( card ) => card.status === 'completed').map( ( card ) => {
-          return(<Card 
+          return(<Card
+            editStatus={this.props.editStatus}
+            editPriority={this.props.editPriority} 
             _key={ card._key }
             title={ card.title }
             status={ card.status }
