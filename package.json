@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/StevenCable/React-Kanban/issues"
   },
-  "homepage": "https://github.com/StevenCable/React-Kanban#readme"
+  "homepage": "https://github.com/StevenCable/React-Kanban#readme",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  }
 }

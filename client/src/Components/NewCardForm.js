@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import addCardReq from '../helpers/addCardReq.js';
 import { connect } from 'react-redux';
 import { addCard } from '../actions/index.js';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css'
 
 class NewCardForm extends Component {
   constructor ( props ) {
@@ -34,6 +36,8 @@ class NewCardForm extends Component {
     event.preventDefault();
 
     this.addCard({
+      
+      _key: this.state._key,
       title: this.state.title,
       status: this.state.status,
       priority: this.state.priority,
@@ -50,6 +54,8 @@ class NewCardForm extends Component {
   }
 
   handleStatus(event){
+    console.log('adding card bvia button: ', event.target.status)
+    console.log('event: ', event)
     this.setState({
       status: event.target.value
     });
@@ -67,13 +73,17 @@ class NewCardForm extends Component {
     });
   }
 
+  
+
   render(){
+    const dropdownArr = [{value: 'queue', label:'Queue'}, {value: 'current', label: 'Current'}, {value:'completed', label:'Completed'}]
     return(
       <form onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="Title" value={this.state.value} onChange={this.handleTitle} />
-        <input type="text" placeholder="How Important?" value={this.state.value} onChange={this.handlePriority} />
-        <input type="text" placeholder="Status?" value={this.state.value} onChange={this.handleStatus} />
-        <input type="text" placeholder="Who gets stuck with this?" value={this.state.value} onChange={this.handleAssignTo} />
+        <input className= "input" type="text" placeholder="Title" value={this.state.value} onChange={this.handleTitle} />
+        <input className= "input" type="text" placeholder="How Important?" value={this.state.value} onChange={this.handlePriority} />
+        <input className= "input" type="text" placeholder="Who gets stuck with this?" value={this.state.value} onChange={this.handleAssignTo} />
+        <input type="radio" name="status" value="queue" onSubmit={this.handleStatus} defaultChecked={true} /><span>Queue</span>
+        <input type="radio" name="status" value="current" onChange={this.handleStatus} /><span>Current</span>
         <input type="submit" value="Create" />
       </form>
     )
