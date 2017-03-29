@@ -1,15 +1,15 @@
-module.exports = function addCardReq(card) {
+import getCardsReq from './getCardsReq.js';
+
+module.exports = function deleteCardReq(card) {
   return new Promise( (resolve, reject ) => {
     function reqListener(){
-      let data = JSON.parse(this.responseText);
-
-      resolve(data);
+      getCardsReq();
     }
 
     const oReq = new XMLHttpRequest();
     oReq.addEventListener('load', reqListener); 
-    oReq.open('POST', '/api/kanban/allcards', true);
+    oReq.open('DELETE', '/api/kanban/:id', true);
     oReq.setRequestHeader("Content-type", "application/json");
-    oReq.send(JSON.stringify(card));
+    oReq.send();
   });
 };

@@ -23,11 +23,9 @@ function cards(state = initialState, action) {
 			return Object.assign({}, state, cardState);
 
 		case UPDATE_CARD:
-		console.log('I PUT CARD!: ', action.type);
 
 		let editCardState = state.cards.map( card => {
 			if(card._key !== action._key){
-				console.log('card hit!', card.title);
 				return card;				
 			}
 			card._key = action._key;

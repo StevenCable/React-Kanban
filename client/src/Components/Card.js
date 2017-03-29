@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateCard } from '../actions';
-// import CardList from './CardList'
 
 class Card extends React.Component{
   constructor(props){
@@ -9,8 +8,6 @@ class Card extends React.Component{
 
     this.handleStatus=this.handleStatus.bind(this)
     this.handlePriority=this.handlePriority.bind(this)
-
-    // this.props = props;
     
   }
 
@@ -32,27 +29,22 @@ class Card extends React.Component{
     })
   }
 
-    
-
-  
-
   render(){
     return (
       <div className={`${this.props.priority}`} >
         <p>Task No.: {this.props._key}</p>
         <p>Title: {this.props.title}</p>
         <form className="editCard" >
-          Status: <select onChange={ this.handleStatus } value={this.props.status}>
-            <option value="queue">Queue</option>
-            <option value="current">Current</option>
-            <option value="completed">Completed</option>
-          </select>
+        <p><input type="radio" name="status" value="queue" onChange={this.handleStatus} defaultChecked={this.props.status==='queue'} /><span>Queue</span></p>
+        <p><input type="radio" name="status" value="current" onChange={this.handleStatus} defaultChecked={this.props.status==='current'} /><span>Current</span></p>
+        <p><input type="radio" name="status" value="completed" onChange={this.handleStatus} defaultChecked={this.props.status==='completed'} /><span>Completed</span></p>
+          
           <p>Priority: <select onChange={ this.handlePriority } value={this.props.priority}>
-            <option value="mellow">Mellow</option>
-            <option value="whatevs">Whatevs</option>
-            <option value="urgent">Urgent</option>
-            <option value="block">Fuuck</option>
-          </select></p>
+              <option value="mellow">Mellow</option>
+              <option value="whatevs">Whatevs</option>
+              <option value="urgent">Urgent</option>
+              <option value="block">Fuuck</option>
+            </select></p>
         </form>
           <p>Responsible: {this.props.assignTo}</p>
       </div>

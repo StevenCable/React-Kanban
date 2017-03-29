@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-// import Board from './Container/Board'
 import { addCard, updateCard } from './actions';
 import { connect } from 'react-redux';
 import QueueList from './Components/QueueCards.js';
@@ -9,23 +8,24 @@ import CurrentList from './Components/CurrentCards.js';
 import CompletedList from './Components/CompletedCards.js';
 import getCardsReq from './helpers/getCardsReq';
 import updateCardReq from './helpers/updateCardReq';
+import deleteCardReq from './helpers/deleteCardReq'
 import NewCardForm from './Components/NewCardForm.js';
 
 
 
 class App extends Component {
   constructor(){
-    super()
+    super();
 
-    this.editStatus = this.editStatus.bind(this)
-    this.editPriority = this.editPriority.bind(this)
+    this.editStatus = this.editStatus.bind(this);
+    this.editPriority = this.editPriority.bind(this);
+    // this.deleteCard = this.deleteCard.bind(this);
   }
 
 
-componentWillMount() {
+componentWillMount(){
   getCardsReq()
     .then( data => {
-      console.log("data Nao", data)
       if(data.length === 0){
         alert('You have no tasks. Get to work Muh Fucka');
       }
@@ -33,29 +33,27 @@ componentWillMount() {
       data.forEach(card => {
         this.props.onAddCard(card.id, card.title, card.status, card.priority, card.assignTo );
       });
-    })   
+    });   
 }
 
 editStatus(cards){
-  console.log("muhhh status card: ", cards)
   updateCardReq(cards)
-    .then((card) =>{ 
-    console.log('cardeezy: ', card)     
-      this.props.onUpdateCard(card.id, card.title, card.status, card.priority, card.assignTo)
-    })
+    .then((card) =>{      
+      this.props.onUpdateCard(card.id, card.title, card.status, card.priority, card.assignTo);
+    });
 }
 
 editPriority(cards){
-  console.log("muhhh priority card: ", cards)
   updateCardReq(cards)
     .then((card) =>{
-      console.log('what priority are you: ', this.props. priority)
-      this.props.onUpdateCard(card.id,card.title, card.status, card.priority, card.assignTo)
-    })
-  //insert req for data
-  //.then
-  //run context action to edit status/priority by id
+      this.props.onUpdateCard(card.id,card.title, card.status, card.priority, card.assignTo);
+    });
 }
+
+// deleteCard(){
+//   deleteCardReq()
+
+// }
 
 
   render(){

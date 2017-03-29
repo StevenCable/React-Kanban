@@ -25,33 +25,29 @@ router.route('/allcards')
       assignTo: req.body.assignTo
     })
     .then((card) => {
-      console.log('caaaarddd', card)
-      res.send("shiiiiiiit");
+      res.send(card);
     })
     .catch(err => {
       res.send(err);
     });
   });
 
-router.route('/:status/:id')
+router.route('/:id')
   .delete((req, res) => {
-    Cards.findById(this.target.id)
-      .then(card => {
-        Cards.destroy({
-          where: {
-            id: `${req.params.id}`
-          }
-        })
-        .then(() => {
-          res.send('Hope that wasn\'t important!');
-        });
+    Cards.destroy({
+      where: {
+        id: `${req.params.id}`
+      }
+    })
+      .then(() => {
+        res.send('Hope that wasn\'t important!');
       });
   });
 
 router.route('/editCard')
   .put((req,res) => {
     let cardID = req.body._key;
-    // console.log('cardID: ', req.body.priority)
+
     Cards.update({
       _key: req.body._key,
       priority: req.body.priority,
@@ -66,7 +62,6 @@ router.route('/editCard')
     .then(() => {
       Cards.findById(cardID)
         .then(card => {
-          console.log('puttin card:', card)
           res.send(card);
         });
       

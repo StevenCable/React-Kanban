@@ -2,7 +2,6 @@ module.exports = function getCardsReq(cards) {
   return new Promise( (resolve, reject ) => {
     function reqListener(){
       let data = JSON.parse(this.responseText);
-      console.log('daaaata: ', data);
       resolve(data);
     }
 
