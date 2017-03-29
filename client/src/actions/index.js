@@ -13,12 +13,14 @@ export function addCard(_key, title, status, priority, assignTo){
 	};
 }
 
-export function updateCard(_key, status, priority){
+export function updateCard(_key, title, status, priority, assignTo){
   console.log('update arguments: ', arguments);
   return {
     type: UPDATE_CARD,
     _key,
+    title,
     status,
-    priority
+    priority,
+    assignTo
   };
 }

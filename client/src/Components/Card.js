@@ -11,26 +11,20 @@ class Card extends React.Component{
     this.handlePriority=this.handlePriority.bind(this)
 
     // this.props = props;
-    console.log('proppy: ', this.props);
+    
   }
 
   handleStatus(event){
-    console.log('edit status: ', this.props.status)
-    console.log('edit priority before: ', this.props.priority)
-
-    
+     
     this.props.editStatus({
       _key: this.props._key,
       status: event.target.value,
       priority: this.props.priority
     })
-    console.log('edit priority after: ', this.props.priority)
-
   }
 
   handlePriority(event){
-    console.log('edit priority: ', this.props.priority)
-
+   
     this.props.editPriority({
       _key: this.props._key,
       status: this.props.status,
@@ -69,8 +63,8 @@ class Card extends React.Component{
 
 const mapDispatchToProps = (dispatch) => {
   return({
-    onUpdateCard: (_key, status, priority) => {
-      dispatch(updateCard(_key, status, priority));
+    onUpdateCard: (_key, title, status, priority, assignTo) => {
+      dispatch(updateCard(_key, title, status, priority, assignTo));
     }
   })
 }

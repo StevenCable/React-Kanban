@@ -36,23 +36,21 @@ componentWillMount() {
     })   
 }
 
-editStatus(card){
-  console.log("muhhh status card: ", card)
-  updateCardReq(card)
-    .then(() =>{
-      console.log('what status are you: ', this.props.status)
-      this.props.onUpdateCard(card._key,card.status)
+editStatus(cards){
+  console.log("muhhh status card: ", cards)
+  updateCardReq(cards)
+    .then((card) =>{ 
+    console.log('cardeezy: ', card)     
+      this.props.onUpdateCard(card.id, card.title, card.status, card.priority, card.assignTo)
     })
-  //insert req for data
-  //.then
-  //run context action to edit status/priority by id
 }
-editPriority(card){
-  console.log("muhhh priority card: ", card)
-  updateCardReq(card)
-    .then(() =>{
+
+editPriority(cards){
+  console.log("muhhh priority card: ", cards)
+  updateCardReq(cards)
+    .then((card) =>{
       console.log('what priority are you: ', this.props. priority)
-      this.props.onUpdateCard(card._key,card.priority)
+      this.props.onUpdateCard(card.id,card.title, card.status, card.priority, card.assignTo)
     })
   //insert req for data
   //.then
@@ -91,8 +89,8 @@ const mapDispatchToProps = (dispatch) => {
     onAddCard: (_key, title, status, priority, assignTo) => {
       dispatch(addCard(_key, title, status, priority, assignTo));
     },
-    onUpdateCard: (_key, status, priority) => {
-      dispatch(updateCard(_key, status, priority));
+    onUpdateCard: (_key, title, status, priority, assignTo) => {
+      dispatch(updateCard(_key, title, status, priority, assignTo));
     }
   })
 }
