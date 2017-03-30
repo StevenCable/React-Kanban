@@ -54,7 +54,6 @@ class Card extends React.Component{
             </select></p>
         </form>
           <p>Responsible: {this.props.assignTo}</p>
-          <button className="delete" onClick{this.deleteCard}>Delete</button>
       </div>
       </div>
     )

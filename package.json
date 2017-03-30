@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/StevenCable/React-Kanban#readme",
   "dependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "react-router-dom": "^4.0.0"
   }
 }
