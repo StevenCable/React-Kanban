@@ -21,11 +21,12 @@
 form{
   text-align: center;
 
-  
 }
 
 .editCard{
     text-align: left;
+    border: 5px dotted pink;
+    padding: 1rem;
   }
 
 input{
@@ -33,6 +34,7 @@ input{
   margin: 0.25rem;
   text-align: center;
 }
+
 
 .taskBoard{
   display: flex;
@@ -46,16 +48,28 @@ input{
   border: 3px red solid;
   width: 30%;
   padding-left: 0.25rem;
+  background-color: salmon;
     
 }
 .current{
   border: 3px blue solid;
   width: 30%;
+  background-color: #7CFD7C;
+  opacity: 1;
 
+
+}
+.current-card{
+  border: 3px red solid;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 .completed{
   border: 3px green solid;
   width: 30%;
+  background-color: #E5E1DD;
 
 }
 .urgent{

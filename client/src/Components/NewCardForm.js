@@ -82,7 +82,7 @@ class NewCardForm extends Component {
         <input className= "input" type="text" placeholder="Title" value={this.state.value} onChange={this.handleTitle} />
         <input className= "input" type="text" placeholder="How Important?" value={this.state.value} onChange={this.handlePriority} />
         <input className= "input" type="text" placeholder="Who gets stuck with this?" value={this.state.value} onChange={this.handleAssignTo} />
-        <input type="radio" name="status" value="queue" onSubmit={this.handleStatus} defaultChecked={true} /><span>Queue</span>
+        <input type="radio" name="status" value="queue" onChange={this.handleStatus} defaultChecked={true} /><span>Queue</span>
         <input type="radio" name="status" value="current" onChange={this.handleStatus} /><span>Current</span>
         <input type="submit" value="Create" />
       </form>

@@ -29,8 +29,15 @@ class Card extends React.Component{
     })
   }
 
+  deleteCard(){
+    //need to finish my delete card by changing the status of said card to be 'deleted' which will
+    //in turn change it's className which will remove it from filter. Then go server side and don't pass through any data with status=delete.
+
+  }
+
   render(){
     return (
+      <div className={`${this.props.status}-card`}>
       <div className={`${this.props.priority}`} >
         <p>Task No.: {this.props._key}</p>
         <p>Title: {this.props.title}</p>
@@ -47,6 +54,8 @@ class Card extends React.Component{
             </select></p>
         </form>
           <p>Responsible: {this.props.assignTo}</p>
+          <button className="delete" onClick{this.deleteCard}>Delete</button>
+      </div>
       </div>
     )
 
