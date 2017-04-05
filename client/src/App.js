@@ -61,7 +61,7 @@ editPriority(cards){
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React - Steven</h2>
+          <h2>Yes, I Kan!</h2>
         </div>
         <div id="newCardForm">
           <NewCardForm />

@@ -5,7 +5,6 @@ const initialState = {
 };
 
 function cards(state = initialState, action) {
-	console.log('which action:', action.type);
 	switch(action.type) {
 		case ADD_CARD:
 		let cardState = {

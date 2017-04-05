@@ -38,23 +38,25 @@ class Card extends React.Component{
   render(){
     return (
       <div className={`${this.props.status}-card`}>
-      <div className={`${this.props.priority}`} >
-        <p>Task No.: {this.props._key}</p>
-        <p>Title: {this.props.title}</p>
-        <form className="editCard" >
-        <p><input type="radio" name="status" value="queue" onChange={this.handleStatus} defaultChecked={this.props.status==='queue'} /><span>Queue</span></p>
-        <p><input type="radio" name="status" value="current" onChange={this.handleStatus} defaultChecked={this.props.status==='current'} /><span>Current</span></p>
-        <p><input type="radio" name="status" value="completed" onChange={this.handleStatus} defaultChecked={this.props.status==='completed'} /><span>Completed</span></p>
-          
-          <p>Priority: <select onChange={ this.handlePriority } value={this.props.priority}>
+        <div className={`${this.props.priority}`} >
+          <p className="task">Task No.: {this.props._key}</p>
+          <p>Title: <span>{this.props.title}</span></p>
+          <form className="editCard" >
+          <p>Status: <select className="dropDownCard" name="status" onChange={this.handleStatus} value={this.props.status}>
+            <option value="queue">Queue</option>
+            <option value="current">Current</option>
+            <option value="completed">Completed</option>
+            <option value="remove">Delete</option>
+          </select></p>          
+          <p>Priority: <select className="dropDownCard" onChange={ this.handlePriority } value={this.props.priority}>
               <option value="mellow">Mellow</option>
               <option value="whatevs">Whatevs</option>
               <option value="urgent">Urgent</option>
               <option value="block">Fuuck</option>
             </select></p>
-        </form>
-          <p>Responsible: {this.props.assignTo}</p>
-      </div>
+          </form>
+            <p className="responsible"><p>{this.props.assignTo}</p></p>
+        </div>
       </div>
     )
 

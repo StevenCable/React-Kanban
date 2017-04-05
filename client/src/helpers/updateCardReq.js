@@ -10,7 +10,6 @@ module.exports = function updateCardReq(card){
     oReq.addEventListener('load', reqListener); 
     oReq.open('PUT', '/api/kanban/editCard', true);
     oReq.setRequestHeader("Content-type", "application/json");
-    console.log('xhr card: ', card);
     oReq.send(JSON.stringify(card));
 
   });

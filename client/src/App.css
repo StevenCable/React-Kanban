@@ -1,3 +1,7 @@
+html{
+ background-color: #ffEFD4; 
+}
+
 .App {
   text-align: left;
 }
@@ -22,17 +26,39 @@ form{
   text-align: center;
 
 }
+span{
+  text-decoration: underline;
+  font-weight: bold;
+}
 
-.editCard{
-    text-align: left;
-    border: 5px dotted pink;
-    padding: 1rem;
-  }
+p{
+  margin: 0rem;
+
+}
+
 
 input{
   padding: 0.25rem;
   margin: 0.25rem;
   text-align: center;
+}
+
+.editCard{
+  text-align: left;
+  margin: 0px;
+  padding: 0px;
+
+}
+
+.dropDown{
+  background-color: white;
+  padding: 0.25rem;
+  margin: 0.25rem;
+  text-align: center;
+}
+
+.dropDownCard{
+  background-color: white;
 }
 
 
@@ -45,45 +71,80 @@ input{
 }
 
 .queue{
-  border: 3px red solid;
+  /*border: 3px red solid;*/
   width: 30%;
-  padding-left: 0.25rem;
-  background-color: salmon;
+  background-color: #D0ECEA;
+  margin: 1rem;
     
 }
 .current{
-  border: 3px blue solid;
+  /*border: 3px blue solid;*/
   width: 30%;
-  background-color: #7CFD7C;
-  opacity: 1;
+  background-color: #9FD6D2;
+  margin: 1rem;
 
-
-}
-.current-card{
-  border: 3px red solid;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
 }
 .completed{
-  border: 3px green solid;
+  /*border: 3px green solid;*/
   width: 30%;
-  background-color: #E5E1DD;
+  background-color: #21A3A3;
+  margin: 1rem;
+}
+
+.queue-card{
+  /*border: 3px blue solid;*/
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  /*padding: 0.25rem;*/
+}
+
+.current-card{
+  /*border: 3px red solid;*/
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  /*padding: 0.25rem;*/
+}
+
+.completed-card{
+ /* border: 3px chartreuse solid;*/
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  /*padding: 0.25rem;*/
+}
+
+.mellow{
+  background-color: #E1F5C4;
+  padding: 0.25rem;
+}
+.whatevs{
+  background-color: #EDE574;
+  padding: 0.25rem;
 
 }
 .urgent{
-      border: 3px orange dotted;
-      margin: 0.5rem;
-      padding: 0.5rem;
+  background-color: #FFbea9;
+  padding: 0.25rem;
 
 }
-.normal{
-      border: 3px pink dotted;
-      padding: 0.5rem;
-      margin: 0.5rem;
+.block{
+  background-color: #ff4e50;
+  padding: 0.25rem;
 
 }
+.task{
+  font-size: 0.6rem;
+  font-weight: bold;
+}
+.responsible{
+  text-align: right;
+}
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

@@ -35,8 +35,7 @@ class NewCardForm extends Component {
   handleSubmit(event){
     event.preventDefault();
 
-    this.addCard({
-      
+    this.addCard({      
       _key: this.state._key,
       title: this.state.title,
       status: this.state.status,
@@ -48,14 +47,11 @@ class NewCardForm extends Component {
 
   handleTitle(event){
     this.setState({
-      title: event.target
-      .value
+      title: event.target.value
     });
   }
 
   handleStatus(event){
-    console.log('adding card bvia button: ', event.target.status)
-    console.log('event: ', event)
     this.setState({
       status: event.target.value
     });
@@ -72,20 +68,31 @@ class NewCardForm extends Component {
       assignTo: event.target.value
     });
   }
-
+//value={this.state.value} 
   
 
   render(){
-    const dropdownArr = [{value: 'queue', label:'Queue'}, {value: 'current', label: 'Current'}, {value:'completed', label:'Completed'}]
     return(
-      <form onSubmit={this.handleSubmit}>
-        <input className= "input" type="text" placeholder="Title" value={this.state.value} onChange={this.handleTitle} />
-        <input className= "input" type="text" placeholder="How Important?" value={this.state.value} onChange={this.handlePriority} />
-        <input className= "input" type="text" placeholder="Who gets stuck with this?" value={this.state.value} onChange={this.handleAssignTo} />
-        <input type="radio" name="status" value="queue" onChange={this.handleStatus} defaultChecked={true} /><span>Queue</span>
-        <input type="radio" name="status" value="current" onChange={this.handleStatus} /><span>Current</span>
-        <input type="submit" value="Create" />
-      </form>
+      <div className="newForm">
+        <form onSubmit={this.handleSubmit}>
+          New Card(s): <input className= "input" type="text" placeholder="Title" value={this.state.value} onChange={this.handleTitle} />
+          <select className= "dropDown" name="priority" placeholder="How Important?" onChange={this.handlePriority}>
+            <option disabled selected value>Priority</option>
+            <option value="mellow">Mellow</option>
+            <option value="whatevs">Whatevs</option>
+            <option value="urgent">Urgent</option>
+            <option value="fuuuck">Fuuuck</option>
+          </select>
+          <input className= "input" type="text" placeholder="Who gets stuck with this?" value={this.state.value} onChange={this.handleAssignTo} />
+          <select className="dropDown" name="status" onChange={this.handleStatus}>
+            <option disabled selected value>Status</option>
+            <option value="queue">Queue</option>
+            <option value="current">Current</option>
+            <option value="completed">Completed</option>
+          </select>
+          <input type="submit" value="Create" />
+        </form>
+      </div>
     )
   }
 }

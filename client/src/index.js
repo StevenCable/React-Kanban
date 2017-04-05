@@ -22,7 +22,6 @@ ReactDOM.render(
       <Nav />
       <Route exact path="/" component={App}/>
       <Route path="/About" component={About}/>
-
     </div>
   </Router>
   </Provider>,
