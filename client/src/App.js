@@ -50,11 +50,6 @@ editPriority(cards){
     });
 }
 
-// deleteCard(){
-//   deleteCardReq()
-
-// }
-
 
   render(){
     return (
